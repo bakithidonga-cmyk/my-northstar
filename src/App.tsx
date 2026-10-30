@@ -19,7 +19,7 @@ type Title = {
 
 type CatalogResponse = { configured: boolean; results: Title[] };
 
-const sampleVideo = 'https://https://cybermovies.ru/';
+const sampleVideo = 'https://https://cybermovies.ru/movies';
 
 function readTitles(key: string): Title[] {
   try {
