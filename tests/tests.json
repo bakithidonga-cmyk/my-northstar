@@ -1,0 +1,95 @@
+[
+  {
+    "name": "Load live trending titles and open a title",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "live TMDB trending catalog",
+      "TMDB title artwork",
+      "title detail dialog"
+    ],
+    "description": "Verifies real catalog results appear in the streaming-style browse layout.",
+    "steps": [
+      "Open Northstar",
+      "Wait for trending titles to load",
+      "Open the first title card"
+    ],
+    "expected": "A live TMDB title appears with its artwork and detail information."
+  },
+  {
+    "name": "Search the live catalog",
+    "viewport": "desktop",
+    "covers": [
+      "TMDB title search",
+      "search results",
+      "empty search feedback"
+    ],
+    "description": "Verifies search queries TMDB and shows matching or empty results.",
+    "steps": [
+      "Open search",
+      "Search for a common movie title phrase",
+      "Search for an unmatched phrase"
+    ],
+    "expected": "Matching titles appear for the first search and a helpful empty state appears for the unmatched phrase."
+  },
+  {
+    "name": "Save and remove a title on mobile",
+    "viewport": "mobile",
+    "covers": [
+      "add to My List",
+      "remove from My List",
+      "saved title persistence",
+      "responsive carousel layout"
+    ],
+    "description": "Verifies a live title can be saved and removed from a narrow screen.",
+    "steps": [
+      "Open a catalog title",
+      "Add it to My List",
+      "Open My List",
+      "Remove the title"
+    ],
+    "expected": "The title appears in My List and disappears after removal."
+  },
+  {
+    "name": "Play a trailer or an authorized direct video",
+    "viewport": "desktop",
+    "covers": [
+      "TMDB trailer playback",
+      "authorized direct video player",
+      "HTTPS video link validation",
+      "playback error handling"
+    ],
+    "description": "Verifies a TMDB trailer can play and the app accepts a direct video source.",
+    "steps": [
+      "Open a title with a YouTube trailer",
+      "Select Play Trailer",
+      "Return to title details",
+      "Enter and save an HTTPS video URL",
+      "Select Play my video"
+    ],
+    "expected": "The trailer embeds in the detail view and an authorized direct video opens in the native player."
+  },
+  {
+    "name": "Show a useful catalog error and retry action",
+    "viewport": "desktop",
+    "covers": [
+      "catalog API failure handling",
+      "visible retry action"
+    ],
+    "description": "Verifies an upstream catalog failure is visible and recoverable.",
+    "qa_faults": [
+      {
+        "method": "GET",
+        "path": "/api/catalog",
+        "status": 502,
+        "body_json": {
+          "error": "catalog_unavailable"
+        }
+      }
+    ],
+    "steps": [
+      "Open Northstar while the catalog request fails"
+    ],
+    "expected": "A clear catalog error and Retry action are visible."
+  }
+]
