@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { api } from '@appdeploy/client';
 import {
   Bell, Check, ChevronDown, ChevronLeft, ChevronRight, CircleUserRound,
   Info, Play, Plus, Search, X,
